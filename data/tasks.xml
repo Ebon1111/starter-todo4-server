@@ -1,153 +1,157 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <tasks>
-  <task>
-    <FIELD1>id</FIELD1>
-    <FIELD2>task</FIELD2>
-    <FIELD3>priority</FIELD3>
-    <FIELD4>size</FIELD4>
-    <FIELD5>group</FIELD5>
-    <FIELD6>deadline</FIELD6>
-    <FIELD7>status</FIELD7>
-    <FIELD8>flag</FIELD8>
-  </task>
-  <task>
-    <FIELD1>1</FIELD1>
-    <FIELD2>COMP1234 assignment</FIELD2>
-    <FIELD3>3</FIELD3>
-    <FIELD4>2</FIELD4>
-    <FIELD5>2</FIELD5>
-    <FIELD6>20170219</FIELD6>
-    <FIELD7>1</FIELD7>
-    <FIELD8></FIELD8>
-  </task>
-  <task>
-    <FIELD1>2</FIELD1>
-    <FIELD2>Mow the lawn</FIELD2>
-    <FIELD3>2</FIELD3>
-    <FIELD4>2</FIELD4>
-    <FIELD5>1</FIELD5>
-    <FIELD6></FIELD6>
-    <FIELD7>2</FIELD7>
-    <FIELD8></FIELD8>
-  </task>
-  <task>
-    <FIELD1>3</FIELD1>
-    <FIELD2>Wash the car</FIELD2>
-    <FIELD3>2</FIELD3>
-    <FIELD4>2</FIELD4>
-    <FIELD5>1</FIELD5>
-    <FIELD6></FIELD6>
-    <FIELD7></FIELD7>
-    <FIELD8></FIELD8>
-  </task>
-  <task>
-    <FIELD1>4</FIELD1>
-    <FIELD2>Paint the fence</FIELD2>
-    <FIELD3>1</FIELD3>
-    <FIELD4>2</FIELD4>
-    <FIELD5>1</FIELD5>
-    <FIELD6></FIELD6>
-    <FIELD7>2</FIELD7>
-    <FIELD8></FIELD8>
-  </task>
-  <task>
-    <FIELD1>6</FIELD1>
-    <FIELD2>Intramural hockey game</FIELD2>
-    <FIELD3>1</FIELD3>
-    <FIELD4>2</FIELD4>
-    <FIELD5>4</FIELD5>
-    <FIELD6></FIELD6>
-    <FIELD7></FIELD7>
-    <FIELD8></FIELD8>
-  </task>
-  <task>
-    <FIELD1>7</FIELD1>
-    <FIELD2>Canucks hockey game</FIELD2>
-    <FIELD3>3</FIELD3>
-    <FIELD4>3</FIELD4>
-    <FIELD5>4</FIELD5>
-    <FIELD6>20170305</FIELD6>
-    <FIELD7></FIELD7>
-    <FIELD8></FIELD8>
-  </task>
-  <task>
-    <FIELD1>8</FIELD1>
-    <FIELD2>Buy steel-toed boots</FIELD2>
-    <FIELD3>2</FIELD3>
-    <FIELD4>1</FIELD4>
-    <FIELD5>3</FIELD5>
-    <FIELD6></FIELD6>
-    <FIELD7></FIELD7>
-    <FIELD8></FIELD8>
-  </task>
-  <task>
-    <FIELD1>9</FIELD1>
-    <FIELD2>Learn French</FIELD2>
-    <FIELD3>1</FIELD3>
-    <FIELD4>3</FIELD4>
-    <FIELD5>3</FIELD5>
-    <FIELD6>20161231</FIELD6>
-    <FIELD7>1</FIELD7>
-    <FIELD8></FIELD8>
-  </task>
-  <task>
-    <FIELD1>10</FIELD1>
-    <FIELD2>Hit the gym</FIELD2>
-    <FIELD3>2</FIELD3>
-    <FIELD4>1</FIELD4>
-    <FIELD5>4</FIELD5>
-    <FIELD6></FIELD6>
-    <FIELD7></FIELD7>
-    <FIELD8></FIELD8>
-  </task>
-  <task>
-    <FIELD1>11</FIELD1>
-    <FIELD2>Pay bills</FIELD2>
-    <FIELD3>3</FIELD3>
-    <FIELD4>1</FIELD4>
-    <FIELD5>1</FIELD5>
-    <FIELD6></FIELD6>
-    <FIELD7></FIELD7>
-    <FIELD8></FIELD8>
-  </task>
-  <task>
-    <FIELD1>12</FIELD1>
-    <FIELD2>Meet George</FIELD2>
-    <FIELD3>2</FIELD3>
-    <FIELD4>1</FIELD4>
-    <FIELD5>1</FIELD5>
-    <FIELD6></FIELD6>
-    <FIELD7></FIELD7>
-    <FIELD8></FIELD8>
-  </task>
-  <task>
-    <FIELD1>13</FIELD1>
-    <FIELD2>Buy milk &amp; bread</FIELD2>
-    <FIELD3>2</FIELD3>
-    <FIELD4>1</FIELD4>
-    <FIELD5>1</FIELD5>
-    <FIELD6></FIELD6>
-    <FIELD7></FIELD7>
-    <FIELD8>1</FIELD8>
-  </task>
-  <task>
-    <FIELD1>14</FIELD1>
-    <FIELD2>Read War &amp; Peace</FIELD2>
-    <FIELD3>1</FIELD3>
-    <FIELD4>3</FIELD4>
-    <FIELD5>1</FIELD5>
-    <FIELD6></FIELD6>
-    <FIELD7></FIELD7>
-    <FIELD8></FIELD8>
-  </task>
-  <task>
-    <FIELD1>15</FIELD1>
-    <FIELD2>Organize the study</FIELD2>
-    <FIELD3>1</FIELD3>
-    <FIELD4>4</FIELD4>
-    <FIELD5>1</FIELD5>
-    <FIELD6></FIELD6>
-    <FIELD7></FIELD7>
-    <FIELD8></FIELD8>
-  </task>
+    <task>
+        <id>id</id>
+        <name>name</name>
+        <priority>priority</priority>
+        <size>size</size>
+        <group>group</group>
+        <deadline>deadline</deadline>
+        <status>status</status>
+        <flag>flag</flag>
+    </task>
+
+    <task>
+        <id>2</id>
+        <name>Mow the lawn</name>
+        <priority>2</priority>
+        <size>2</size>
+        <group>1</group>
+        <deadline></deadline>
+        <status>2</status>
+        <flag></flag>
+    </task>
+
+    <task>
+        <id>3</id>
+        <name>Wash the car</name>
+        <priority>2</priority>
+        <size>2</size>
+        <group>1</group>
+        <deadline></deadline>
+        <status></status>
+        <flag></flag>
+    </task>
+
+    <task>
+        <id>4</id>
+        <name>Paint the fence</name>
+        <priority>1</priority>
+        <size>2</size>
+        <group>1</group>
+        <deadline></deadline>
+        <status>2</status>
+        <flag></flag>
+    </task>
+
+    <task>
+        <id>6</id>
+        <name>Intramural hockey game</name>
+        <priority>1</priority>
+        <size>2</size>
+        <group>4</group>
+        <deadline></deadline>
+        <status></status>
+        <flag></flag>
+    </task>
+
+    <task>
+        <id>7</id>
+        <name>Canucks hockey game</name>
+        <priority>3</priority>
+        <size>3</size>
+        <group>4</group>
+        <deadline>20170305</deadline>
+        <status></status>
+        <flag></flag>
+    </task>
+
+    <task>
+        <id>8</id>
+        <name>Buy steel-toed boots</name>
+        <priority>2</priority>
+        <size>1</size>
+        <group>3</group>
+        <deadline></deadline>
+        <status></status>
+        <flag></flag>
+    </task>
+
+    <task>
+        <id>9</id>
+        <name>Learn French</name>
+        <priority>1</priority>
+        <size>3</size>
+        <group>3</group>
+        <deadline>20161231</deadline>
+        <status>1</status>
+        <flag></flag>
+    </task>
+
+    <task>
+        <id>10</id>
+        <name>Hit the gym</name>
+        <priority>2</priority>
+        <size>1</size>
+        <group>4</group>
+        <deadline></deadline>
+        <status></status>
+        <flag></flag>
+    </task>
+
+    <task>
+        <id>11</id>
+        <name>Pay bills</name>
+        <priority>3</priority>
+        <size>1</size>
+        <group>1</group>
+        <deadline></deadline>
+        <status></status>
+        <flag></flag>
+    </task>
+
+    <task>
+        <id>12</id>
+        <name>Meet George</name>
+        <priority>2</priority>
+        <size>1</size>
+        <group>1</group>
+        <deadline></deadline>
+        <status></status>
+        <flag></flag>
+    </task>
+
+    <task>
+        <id>13</id>
+        <name>Buy milk &amp; bread</name>
+        <priority>2</priority>
+        <size>1</size>
+        <group>1</group>
+        <deadline></deadline>
+        <status></status>
+        <flag>1</flag>
+    </task>
+
+    <task>
+        <id>14</id>
+        <name>Read War &amp; Peace</name>
+        <priority>1</priority>
+        <size>3</size>
+        <group>1</group>
+        <deadline></deadline>
+        <status></status>
+        <flag></flag>
+    </task>
+
+    <task>
+        <id>15</id>
+        <name>Organize the study</name>
+        <priority>1</priority>
+        <size>4</size>
+        <group>1</group>
+        <deadline></deadline>
+        <status></status>
+        <flag></flag>
+    </task>
+
 </tasks>

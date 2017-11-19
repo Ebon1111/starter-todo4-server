@@ -134,4 +134,4 @@ $autoload['language'] = array();
 |	$autoload['model'] = array('first_model' => 'first');
 */
 //$autoload['model'] = array('app');
-$autoload['model'] = array('app', 'tasks', 'task');
+$autoload['model'] = array('app', 'tasks', 'task', 'XML_Model');
