@@ -51,18 +51,25 @@ class XML_Model extends Memory_Model
 			$first = TRUE;
 			// var_dump($this->xml->task);
 			// for($i = 0; $i < count($this->xml); $i++) {
-			foreach($this->xml as $child){
+			
+			$data =  json_decode(json_encode((array)$this->xml),true);
+			
+			$this->_data = [];
+
+			$key = array_keys($data)[0];
+
+			foreach($data[$key] as $child){
 				// var_dump((array)$child);
 				// echo "<br />";
 				// echo "<br />";
 				// echo "<br />";
 				if ($first) {
 					$count = 0;
-					foreach ($child as $property)
-						var_dump($property);
-						// $this->_fields[$count++] = $property->{0};
+				
+					$this->_fields = array_keys($child);
+
+					$this->_data[@$child['id']] = self::objectConverter($child);
 					
-					$first = !$first;
 					// var_dump($this->_fields);
 				} else {
 					// $record = new stdClass();
@@ -77,6 +84,36 @@ class XML_Model extends Memory_Model
 		// rebuild the keys table
 		// $this->reindex();
 	}
+
+
+	static function objectConverter($array) {
+    	$object = new stdClass();
+
+        if (is_array($array) && count($array) > 0) 
+        {
+            foreach ($array as $key=>$value) 
+            {
+
+                $key = strtolower(trim($key));
+                
+                if (!empty($key)) 
+                {
+                    $object->$key = XML_Model::objectConverter($value);
+                }
+            }
+
+            return $object;
+        }
+
+        else 
+        {
+
+            return false;
+
+        }
+	}
+
+
 
 	/**
 	 * Store the collection state appropriately, depending on persistence choice.
