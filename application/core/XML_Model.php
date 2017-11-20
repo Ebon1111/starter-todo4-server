@@ -55,7 +55,7 @@ class XML_Model extends Memory_Model
 			$first = true;
 			foreach($data[array_keys($data)[0]] as $child) {
 				if(!$first)
-					$this->_data[@$child['id']] = self::objectConverter($child);
+					$this->_data[@$child['id']] = $this->objectConverter($child);
 				else {
 					$this->_fields = array_keys($child);
 					$first = false;
@@ -68,7 +68,7 @@ class XML_Model extends Memory_Model
 		$this->reindex();
 	}
 
-	static function objectConverter($array) {
+	function objectConverter($array) {
     	if (!is_array($array)) {
             return $array;
         }
@@ -135,6 +135,7 @@ class XML_Model extends Memory_Model
 				//assign values match with keys
 				$property->appendChild($xml->createTextNode($value));
 				
+				//var_dump($property);
 			}
 
 			//add a node
