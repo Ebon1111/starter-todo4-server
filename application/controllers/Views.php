@@ -16,7 +16,7 @@ class Views extends Application
     public function index()
     {
         $this->data['pagetitle'] = 'Ordered TODO List';
-        $tasks = $this->tasks->all();   // get all the tasks
+        $tasks = $this->XML_Tasks->all();   // get all the tasks
         $this->data['content'] = 'Ok'; // so we don't need pagebody
         $this->data['leftside'] = $this->makePrioritizedPanel($tasks);
 		$this->data['rightside'] = $this->makeCategorizedPanel($tasks);
@@ -55,7 +55,7 @@ class Views extends Application
 
 	function makeCategorizedPanel($tasks)
 	{
-	    $parms = ['display_tasks' => $this->tasks->getCategorizedTasks()];
+	    $parms = ['display_tasks' => $this->XML_Tasks->getCategorizedTasks()];
 	    return $this->parser->parse('by_category', $parms, true);
 	}
 

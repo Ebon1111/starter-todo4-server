@@ -33,7 +33,7 @@ class Mtce extends Application
 	// Extract & handle a page of items, defaulting to the beginning
 	function page($num = 1)
 	{
-	    $records = $this->tasks->all(); // get all the tasks
+	    $records = $this->XML_Tasks->all(); // get all the tasks
 	    $tasks = array(); // start with an empty extract
 
 	    // use a foreach loop, because the record indices may not be sequential
@@ -57,7 +57,7 @@ class Mtce extends Application
 
 	// Build the pagination navbar
 	private function pagenav($num) {
-	    $lastpage = ceil($this->tasks->size() / $this->items_per_page);
+	    $lastpage = ceil($this->XML_Tasks->size() / $this->items_per_page);
 	    $parms = array(
 	        'first' => 1,
 	        'previous' => (max($num-1,1)),
@@ -70,7 +70,7 @@ class Mtce extends Application
 	// Initiate adding a new task
 	public function add()
 	{
-	    $task = $this->tasks->create();
+	    $task = $this->XML_Tasks->create();
 	    $this->session->set_userdata('task', $task);
 	    $this->showit();
 	}
@@ -100,7 +100,7 @@ class Mtce extends Application
 	        $this->data['error'] = '';
 
 	    $fields = array(
-	        'ftask'      => form_label('Task description') . form_input('task', $task->task),
+	        'ftask'      => form_label('Task description') . form_input('task', $task->name),
 	        'fpriority'  => form_label('Priority') . form_dropdown('priority', $this->app->priority(), $task->priority),
 	        'zsubmit'    => form_submit('submit', 'Update the TODO task'),
 	    );
