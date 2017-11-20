@@ -55,19 +55,20 @@ class XML_Model extends Memory_Model
 			$first = true;
 			foreach($data[array_keys($data)[0]] as $child) {
 				if(!$first)
-					$this->_data[@$child['id']] = self::objectConverter($child);
+					$this->_data[@$child['id']] = $this->objectConverter($child);
 				else {
 					$this->_fields = array_keys($child);
 					$first = false;
 				}
 			}
 		}
+
 		// --------------------
 		// rebuild the keys table
 		$this->reindex();
 	}
 
-	static function objectConverter($array) {
+	function objectConverter($array) {
     	if (!is_array($array)) {
             return $array;
         }
@@ -105,14 +106,43 @@ class XML_Model extends Memory_Model
 		// rebuild the keys table
 		$this->reindex();
 		//---------------------
-		if (($handle = fopen($this->_origin, "w")) !== FALSE)
-		{
-			fputcsv($handle, $this->_fields);
-			foreach ($this->_data as $key => $record)
-				fputcsv($handle, array_values((array) $record));
-			fclose($handle);
-		}
+		// if (($handle = fopen($this->_origin, "w")) !== FALSE)
+		// {
+		// 	fputcsv($handle, $this->_fields);
+		// 	foreach ($this->_data as $key => $record)
+		// 		fputcsv($handle, array_values((array) $record));
+		// 	fclose($handle);
+		// }
 		// --------------------
+		$xml = new DomDocument();
+		$xml->formatOutput = true;
+
+		$row = $xml->createElement("task");
+		$node = $xml->appendChild($row);
+		 
+
+		foreach( $this->_data as $row ){
+
+			//create a node 
+			$rowItem = $xml->createElement('task');
+
+			//create elements and assign to the node
+			foreach($row as $key => $value) {
+
+				//setup keys for each elements
+				$property = $xml->createElement($key);
+
+				//assign values match with keys
+				$property->appendChild($xml->createTextNode($value));
+				
+				//var_dump($property);
+			}
+
+			//add a node
+			$node->appendChild($rowItem);
+		}
+
+		$xml->saveXML();
 	}
 
 }
