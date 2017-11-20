@@ -12,6 +12,17 @@
     </task>
 
     <task>
+        <id>1</id>
+        <desc>COMP1234 assignment</desc>
+        <priority>3</priority>
+        <size>2</size>
+        <group>2</group>
+        <deadline>20170219</deadline>
+        <status>2</status>
+        <flag />
+   </task>
+    
+    <task>
         <id>2</id>
         <name>Mow the lawn</name>
         <priority>2</priority>

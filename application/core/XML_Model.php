@@ -7,7 +7,7 @@
  * @copyright           Copyright (c) 2010-2017, James L. Parry
  * ------------------------------------------------------------------------
  */
-class CSV_Model extends Memory_Model
+class XML_Model extends Memory_Model
 {
 //---------------------------------------------------------------------------
 //  Housekeeping methods
@@ -19,7 +19,7 @@ class CSV_Model extends Memory_Model
 	 * @param string $keyfield  Name of the primary key field
 	 * @param string $entity	Entity name meaningful to the persistence
 	 */
-	function __construct($origin = null, $keyfield = 'id', $entity = null)
+	function __construct($origin, $keyfield = 'id', $entity = null)
 	{
 		parent::__construct();
 
@@ -47,33 +47,54 @@ class CSV_Model extends Memory_Model
 	protected function load()
 	{
 		//---------------------
-		if (($handle = fopen($this->_origin, "r")) !== FALSE)
-		{
+		if (($this->xml = simplexml_load_file($this->_origin)) !== FALSE) {
+			
+			//convert xml object into array
+			$data =  json_decode(json_encode((array)$this->xml),true);
+
 			$first = true;
-			while (($data = fgetcsv($handle)) !== FALSE)
-			{
-				if ($first)
-				{
-					// populate field names from first row
-					$this->_fields = $data;
+			foreach($data[array_keys($data)[0]] as $child) {
+				if(!$first)
+					$this->_data[@$child['id']] = self::objectConverter($child);
+				else {
+					$this->_fields = array_keys($child);
 					$first = false;
 				}
-				else
-				{
-					// build object from a row
-					$record = new stdClass();
-					for ($i = 0; $i < count($this->_fields); $i ++ )
-						$record->{$this->_fields[$i]} = $data[$i];
-					$key = $record->{$this->_keyfield};
-					$this->_data[$key] = $record;
-				}
 			}
-			fclose($handle);
 		}
 		// --------------------
 		// rebuild the keys table
 		$this->reindex();
 	}
+
+	static function objectConverter($array) {
+    	if (!is_array($array)) {
+            return $array;
+        }
+
+        $object = new stdClass();
+        
+        if ( count($array) != 0) 
+        {
+            foreach ($array as $key=>$value) 
+            {
+
+                $key = strtolower(trim($key));
+
+                if (!empty($key)) 
+                {
+                    $object->$key = XML_Model::objectConverter($value);
+                }
+            }
+
+            return $object;
+        } else 
+            return FALSE;
+
+	}
+
+
+
 
 	/**
 	 * Store the collection state appropriately, depending on persistence choice.
