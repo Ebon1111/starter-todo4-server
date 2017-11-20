@@ -70,7 +70,7 @@ class Mtce extends Application
 	// Initiate adding a new task
 	public function add()
 	{
-	    $task = $this->tasks->create();
+	    $task = $this->XML_Tasks->create();
 	    $this->session->set_userdata('task', $task);
 	    $this->showit();
 	}
@@ -100,7 +100,7 @@ class Mtce extends Application
 	        $this->data['error'] = '';
 
 	    $fields = array(
-	        'ftask'      => form_label('Task description') . form_input('task', $task->task),
+	        'ftask'      => form_label('Task description') . form_input('task', $task->name),
 	        'fpriority'  => form_label('Priority') . form_dropdown('priority', $this->app->priority(), $task->priority),
 	        'zsubmit'    => form_submit('submit', 'Update the TODO task'),
 	    );
