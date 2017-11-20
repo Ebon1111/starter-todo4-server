@@ -13,7 +13,7 @@
 
     <task>
         <id>1</id>
-        <desc>COMP1234 assignment</desc>
+        <name>COMP1234 assignment</name>
         <priority>3</priority>
         <size>2</size>
         <group>2</group>
