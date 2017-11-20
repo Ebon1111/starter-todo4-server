@@ -48,37 +48,30 @@ class XML_Model extends Memory_Model
 	{
 		//---------------------
 		if (($this->xml = simplexml_load_file('../data/' . $this->_origin)) !== FALSE) {
-			$first = TRUE;
-			// var_dump($this->xml->task);
-			// for($i = 0; $i < count($this->xml); $i++) {
 			
+			//convert xml object into array
 			$data =  json_decode(json_encode((array)$this->xml),true);
-			
+
 			$this->_data = [];
+			//var_dump($data);
 
 			$key = array_keys($data)[0];
+			$first = true;
+			foreach($data[$key] as $child)
+			{
 
-			foreach($data[$key] as $child){
-				// var_dump((array)$child);
-				// echo "<br />";
-				// echo "<br />";
-				// echo "<br />";
-				if ($first) {
-					$count = 0;
-				
-					$this->_fields = array_keys($child);
+				$this->_fields = array_keys($child);
 
+				if(!$first) {
 					$this->_data[@$child['id']] = self::objectConverter($child);
-					
-					// var_dump($this->_fields);
-				} else {
-					// $record = new stdClass();
-					// for ($i = 0; $i < count($this->_fields); $i++)
-					// 	$record->{$this->_fields[$i]} = $child[$i];
-					// $key = $record->{$this->_keyfield};
-					// $this->_data[$key] = $record;
+				}else {
+					$first = false;
 				}
+
 			}
+
+
+			var_dump($this->_data);
 		}
 		// --------------------
 		// rebuild the keys table
@@ -86,16 +79,21 @@ class XML_Model extends Memory_Model
 	}
 
 
+	
 	static function objectConverter($array) {
-    	$object = new stdClass();
+    	if (!is_array($array)) {
+            return $array;
+        }
 
-        if (is_array($array) && count($array) > 0) 
+        $object = new stdClass();
+        
+        if ( count($array) != 0) 
         {
             foreach ($array as $key=>$value) 
             {
 
                 $key = strtolower(trim($key));
-                
+
                 if (!empty($key)) 
                 {
                     $object->$key = XML_Model::objectConverter($value);
@@ -108,10 +106,11 @@ class XML_Model extends Memory_Model
         else 
         {
 
-            return false;
+            return FALSE;
 
         }
 	}
+
 
 
 
