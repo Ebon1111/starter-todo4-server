@@ -11,7 +11,7 @@
                 <tr>
                         <td>{id}</td>
                         <td><input type='checkbox' name='task{id}'/></td>
-                        <td>{task}</td>
+                        <td>{name}</td>
                         <td>{status}</td>
                 </tr>
                 {/display_tasks}    

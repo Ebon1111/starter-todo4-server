@@ -33,7 +33,7 @@ class Mtce extends Application
 	// Extract & handle a page of items, defaulting to the beginning
 	function page($num = 1)
 	{
-	    $records = $this->tasks->all(); // get all the tasks
+	    $records = $this->XML_Tasks->all(); // get all the tasks
 	    $tasks = array(); // start with an empty extract
 
 	    // use a foreach loop, because the record indices may not be sequential
@@ -57,7 +57,7 @@ class Mtce extends Application
 
 	// Build the pagination navbar
 	private function pagenav($num) {
-	    $lastpage = ceil($this->tasks->size() / $this->items_per_page);
+	    $lastpage = ceil($this->XML_Tasks->size() / $this->items_per_page);
 	    $parms = array(
 	        'first' => 1,
 	        'previous' => (max($num-1,1)),
