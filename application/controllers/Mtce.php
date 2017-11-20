@@ -80,7 +80,7 @@ class Mtce extends Application
 	{
 	    if ($id == null)
 	        redirect('/mtce');
-	    $task = $this->tasks->get($id);
+	    $task = $this->XML_Tasks->get($id);
 	    $this->session->set_userdata('task', $task);
 	    $this->showit();
 	}
@@ -115,7 +115,7 @@ class Mtce extends Application
 	{
 	    // setup for validation
 	    $this->load->library('form_validation');
-	    $this->form_validation->set_rules($this->tasks->rules());
+	    $this->form_validation->set_rules($this->XML_Tasks->rules());
 
 	    // retrieve & update data transfer buffer
 	    $task = (array) $this->session->userdata('task');
@@ -128,12 +128,12 @@ class Mtce extends Application
 	    {
 	        if (empty($task->id))
 	        {
-	                            $task->id = $this->tasks->highest() + 1;
-	            $this->tasks->add($task);
+	            $task->id = $this->XML_Tasks->highest() + 1;
+	            $this->XML_Tasks->add($task);
 	            $this->alert('Task ' . $task->id . ' added', 'success');
 	        } else
 	        {
-	            $this->tasks->update($task);
+	            $this->XML_Tasks->update($task);
 	            $this->alert('Task ' . $task->id . ' updated', 'success');
 	        }
 	    } else
