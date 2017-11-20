@@ -62,6 +62,7 @@ class XML_Model extends Memory_Model
 				}
 			}
 		}
+
 		// --------------------
 		// rebuild the keys table
 		$this->reindex();
@@ -105,14 +106,42 @@ class XML_Model extends Memory_Model
 		// rebuild the keys table
 		$this->reindex();
 		//---------------------
-		if (($handle = fopen($this->_origin, "w")) !== FALSE)
-		{
-			fputcsv($handle, $this->_fields);
-			foreach ($this->_data as $key => $record)
-				fputcsv($handle, array_values((array) $record));
-			fclose($handle);
-		}
+		// if (($handle = fopen($this->_origin, "w")) !== FALSE)
+		// {
+		// 	fputcsv($handle, $this->_fields);
+		// 	foreach ($this->_data as $key => $record)
+		// 		fputcsv($handle, array_values((array) $record));
+		// 	fclose($handle);
+		// }
 		// --------------------
+		$xml = new DomDocument();
+		$xml->formatOutput = true;
+
+		$row = $xml->createElement("task");
+		$node = $xml->appendChild($row);
+		 
+
+		foreach( $this->_data as $row ){
+
+			//create a node 
+			$rowItem = $xml->createElement('task');
+
+			//create elements and assign to the node
+			foreach($row as $key => $value) {
+
+				//setup keys for each elements
+				$property = $xml->createElement($key);
+
+				//assign values match with keys
+				$property->appendChild($xml->createTextNode($value));
+				
+			}
+
+			//add a node
+			$node->appendChild($rowItem);
+		}
+
+		$xml->saveXML();
 	}
 
 }
