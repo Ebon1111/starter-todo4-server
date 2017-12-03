@@ -97,3 +97,9 @@ defined('ROLE_OWNER') OR define('ROLE_OWNER', 'Owner');
 // location of data folders
 define('DATAPATH', './data/');
 define('XMLSUFFIX','.xml');
+
+/**
+ * Modified to use REST client to get port data from our server.
+ */
+define('REST_SERVER', 'http://backend.local');  // the REST server host
+define('REST_PORT', $_SERVER['SERVER_PORT']);   // the port you are running the server on
